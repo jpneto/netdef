@@ -1,0 +1,136 @@
+<html>
+
+<head>
+<title>Modular Construction of Analog Recurrent Neural NetworksJoão Neto</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p align="center"><b><font SIZE="5">Modular Construction of Analog Recurrent Neural
+Networks<br>
+</font><font size="4">João Neto's Ph.D. work in progress...</font></b><br>
+&nbsp; </p>
+
+<ul>
+  <li><strong>Ph.D. Work Plan (started Set. 1996, expected to finish in middle 2001)</strong></li>
+</ul>
+
+<blockquote>
+  <ol>
+    <li>Define the working vocabulary and present the relevant issues of Neural Networks and
+      Theory of Computation. These point corresponds to the first three chapters of the Thesis.
+      They present the working notation and some well-known knowledge on these areas that will
+      be used in the next chapters.</li>
+    <li>Universality of Sigma Neural Nets. In this chapter, I present a modular proof that sigma
+      nets (i.e., where all neurons have the piecewise linear activation function) are
+      Universal. This is done by using a modular approach based on Recursive Function Theory.
+      This modularity is a fundamental feature on this work, and it will be essential for the
+      construction of complex neural nets. This work was presented in [1].</li>
+    <li>Construction of a Neural Network high-level programming language. This language, called
+      NETDEF (Network Definition), is used to define complex algorithms, using several parallel
+      oriented concepts, like parallel blocks and mutual exclusion. Each described algorithm in
+      NETDEF can be translated into a sigma network computing the algorithm's result. There is a
+      executable program already working, that can compile NETDEF programs. This work was
+      outlined in [2,5] and is fully described in [3].</li>
+    <li>Integration of symbolic and subsymbolic computation. After NETDEF, where is it possible
+      to define complex symbolic tasks and assign them to neural nets, the following step is to
+      create interaction between this unusual way to use neural nets with the more standard
+      methods of neural nets, namely, learning and classification. There are two main goals in
+      this chapter: (a) interface definition, i.e., how symbolic and subsymbolic modules can
+      interact and communicate, and (b) how learning may be conducted in neural nets using only
+      neural nets, i.e., instead of thinking of a neural net as a special data structure in a
+      von Neumann computer, the goal is to find a neural net description (a set of discrete
+      dynamic equations) that can learn but also is able to control the learning process. Goal
+      (a) is outlined in [4] and I'm currently working on goal (b), namely, finding a simple and
+      direct way to implement competitive learning. Future steps may include:<ol>
+        <li>Implement other learning laws, like Hebb's law and LMS.</li>
+        <li>Try to define learning modules as general as possible. (Felix asked if some kind of
+          &nbsp; 'universal learning module' makes sense. Does it?).</li>
+        <li>Define ways to preprocess sample information, like filtering sample features.</li>
+        <li>How to embed predefined knowledge in learning modules.</li>
+      </ol>
+    </li>
+    <li>After point 4, I intend to conclude the Thesis with a treatment of one or two sample
+      applications using NETDEF tools. One application would be using unsupervised learning for
+      cluster classification of a problem with some predefined knowledge (where the symbolic
+      structure may be used to improve network classification&nbsp; performance). Other possible
+      problem, is to define neural control and learning structures for agents in multi-agent
+      environments.</li>
+  </ol>
+</blockquote>
+
+<ul>
+  <li><strong>Relevant Publications</strong></li>
+</ul>
+
+<blockquote>
+  <ol>
+    <li><font FACE="Times-Italic" size="3">J.Neto, H. Siegelmann, J. Costa, C.
+      Araújo. <i>Turing
+      Universality of Neural Nets (revisited)</i></font><font face="Times-Roman" size="3">. </font><font
+      FACE="Times-Bold" size="3"><b>Lecture Notes in Computer Science &#150; 1333</b></font><font
+      face="Times-Roman" size="3">, 361-366, Springer-Verlag, 1997. Download it in <a
+      href="ecast_ps.gz">gziped postscript</a> or <a href="eurocast.pdf">pdf</a> format.</font></li>
+    <li><font FACE="Times-Italic" size="3">J.Neto, H. Siegelmann, J. Costa.</font><font
+      SIZE="3"> <i>On the Implementation of Programming Languages with Neural Nets</i>. In <b>First
+      International Conference on Computing Anticipatory Systems, CASYS 97</b>, [1], 201-208,
+      CHAOS, 1998. </font><font
+      SIZE="3">Download it on <a href="casys97.pdf">pdf</a> format.</font></li>
+    <li><font FACE="Times-Italic" size="3">J.Neto, H. Siegelmann, J. Costa. </font><font FACE="Times-Bold" size="3"><i>Symbolic Processing in Neural Networks</i>,
+      to be published in the <b>Journal of Brazilian Computer Science</b>. </font><font face="Times-Roman" size="3">Download it in <a href="jbcs_ps.gz">gziped
+      postscript</a> or <a href="jbcs.pdf">pdf</a> format.</font></li>
+    <li><font SIZE="3">J. Neto, J. Costa, A. Ferreira. <i>Merging Sub-symbolic and Symbolic
+      Computation</i>, <font face="Times-Roman"><b>Proceedings of the Second
+      International ICSC Symposium on Neural Computation NC'00</b> (Bothe, H.
+      and Rojas, R., Eds.), ICSC Academic Press, (2000), 329-335..</font> </font><font face="Times-Roman" size="3">Download it in <a
+      href="nc2k_ps.gz">gziped postscript</a> or <a href="nc2000.pdf">pdf</a> 
+      format..</font></li>
+    <li><font size="3">J. Neto, H. Siegelmann, J. Costa, <i>Information Coding
+      and Neural Computing,</i> <b>Advances in A.I. and Engineering Cybernetics,
+      Vol. IV: Systems Logic &amp; Neural Networks</b>, IIAS, [10], 1998, 76-80.</font><font
+      SIZE="3"> Download it on <a href="intersys.pdf">pdf</a>  format.</font></li>
+    <li><font size="3">J. Neto, J. Costa, H. Coelho, <i>Lower Bounds of a
+      Computacional Power of a Synaptic Calculus</i>. In <b>Lecture Notes in
+      Computer Science - 1240</b>, 340-348, Springer-Verlag, 1997. </font><font
+      face="Times-Roman" size="3"> Download it in <a href="iwann_ps.gz">gziped postscript</a> or
+      <a href="iwann.pdf">pdf</a> format.</font></li>
+  </ol>
+</blockquote>
+
+<ul>
+  <li><strong>NETDEF</strong></li>
+</ul>
+
+<blockquote>
+  <ol>
+    <li><a href="http://fgc.math.ist.utl.pt/NetDef/netdef.zip">Compiler</a> v1.5 (Windows
+      only)</li>
+    <li><a href="http://fgc.math.ist.utl.pt/NetDef/nethelp.zip">HelpFile</a></li>
+    <li><a href="nc-slides.pdf">Slides</a>.</li>
+    <li><a href="http://www.di.fc.ul.pt/~jpn/netdef/netdef.htm">Homepage</a></li>
+    <li><a href="lsansuni.zip">Lucinda Sans Unicode TTF</a></li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <hr>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>NETDEF</title>
+</head>
+
+<body background="glabkgnd.jpg" bgcolor="#FFFFFF" text="#000000" link="#006666" vlink="#999999" alink="#66CCCC">
+<p align="center"><b><font size="5">NETDEF<br>A Neural Language</font></b></p>
+
+<ul>
+	<li><p
+        align="left"><font size="4"
+        face="Trebuchet MS, Arial, Helvetica"><strong>What is it?</strong></font></p>
+      </li>
+</ul>
+<blockquote>
+<p align="left">NETDEF
+(<u>Net</u>work <u>Def</u>inition) is a high level parallel
+language used to define complex algorithms. It was based on the
+Occam language, having processes (a modular flow of execution)
+and channels (unidirectional point-to-point communication of
+values) as its main concepts. NETDEF has the usual control
+structures and operators, and has also specific processes aiming
+some neural networks distinct features.</p>
+
+<p align="left">In
+this webpage, it is <a
+href="#Downloads">available</a> a NETDEF compiler and
+simulator, in order to program and test the potentialities of
+this approach (for Windows&trade; only). If you have some
+questions or suggestions please email <a href="mailto:jpneto@fc.ul.pt">me</a>.</p>
+
+<p align="left">Here
+is a sample image of the compiler. It was programmed in Borland's
+Delphi&trade; 4 environment system.</p>
+
+</blockquote>
+
+<p align="center"><font face="Trebuchet MS, Arial, Helvetica"><img
+src="netdef.gif" alt="netdef.gif (23331 bytes)"
+width="700" height="433"></font></p>
+
+<p align="center"><font size="2"
+face="Trebuchet MS, Arial, Helvetica">Fig. 1: Using the NETDEF
+compiler</font></p>
+
+<blockquote>
+
+<p>The compiler takes a NETDEF program, compiles it and give a
+neural network text description. E.g., the program:</p>
+
+  <blockquote>
+    <dl>
+        <dt><font size="2" face="Courier New">NETDEF
+            netName(0,0) IS<br>
+          VAR&nbsp;&nbsp;<br>
+          &nbsp; i&nbsp; : integer;&nbsp;&nbsp;<br>
+          &nbsp; c1 : channel;</font></dt>
+        <dt><font size="2" face="Courier New">SEQ&nbsp;&nbsp;<br>
+          &nbsp; SEND i TO c1;<br>
+          ENDSEQ;</font></dt>
+        <dt><font size="2" face="Courier New">ENDDEF.</font></dt>
+    </dl>
+  </blockquote>
+
+<p>is compiled into the following network:</p>
+
+  <blockquote>
+    <dl>
+        <dt><font size="2" face="Courier New">Mn0In(i+1)
+            = sigma( )</font> </dt>
+        <dt><font size="2" face="Courier New">Mn0Out(i+1)
+            = sigma( + 1,0 * SEQ1Out(i) )<br>
+            </font></dt>
+        <dt><font size="2" face="Courier New">VARIMn0:i(i+1)
+            = sigma( + 1,0 * VARIMn0:i(i) )</font> </dt>
+        <dt><font size="2" face="Courier New">VARCMn0:c1(i+1)
+            = sigma( + 1,0 * VARCMn0:c1(i) + 1,0 * SEND1Val(i) )</font>
+        </dt>
+        <dt><font size="2" face="Courier New">VARCMn0:c1Flg(i+1)
+            = sigma( + 1,0 * Mn0In(i) + 1,0 * VARCMn0:c1Flg(i) </font></dt>
+        <dt><font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            - 1,0 * SEND1Flg(i) )<br>
+            </font></dt>
+        <dt><font size="2" face="Courier New">SEQ1In(i+1)
+            = sigma( + 1,0 * Mn0In(i) )</font> </dt>
+        <dt><font size="2" face="Courier New">SEQ1Out(i+1)
+            = sigma( + 1,0 * SEND1Out(i) )<br>
+            </font></dt>
+        <dt><font size="2" face="Courier New">SEND1In(i+1)
+            = sigma( + 1,0 * SEQ1In(i) + 1,0 * SEND1In(i) </font></dt>
+        <dt><font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            - 1,0 * SEND1Wait(i) )</font> </dt>
+        <dt><font size="2" face="Courier New">SEND1Out(i+1)
+            = sigma( + 1,0 * SEND1Wait(i) )</font> </dt>
+        <dt><font size="2" face="Courier New">SEND1Wait(i+1)
+            = sigma( + 2,0 * VARCMn0:c1Flg(i) + 1,0 * SEND1In(i) </font></dt>
+        <dt><font size="2" face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            - 1,0 * SEND1Wait(i) - 2,0 )</font> </dt>
+        <dt><font size="2" face="Courier New">SEND1Flg(i+1)
+            = sigma( + 1,0 * SEND1Wait(i) )</font> </dt>
+        <dt><font size="2" face="Courier New">SEND1Val(i+1)
+            = sigma( + 1,0 * VARIMn0:i(i) + 1,0 * SEND1Wait(i) -
+            1,0 )</font> </dt>
+    </dl>
+  </blockquote>
+
+<p>This text describes a neural network that executes the
+algorithm defined by the NETDEF program above.</p>
+</blockquote>
+<hr>
+<ul>
+	<li><p
+        align="left"><font size="4"
+        face="Trebuchet MS, Arial, Helvetica"><strong>Why NETDEF?</strong></font></p>
+      </li>
+</ul>
+<blockquote>
+<p align="left" mstheme>There are many scientific and commercial approaches in the
+neurocomputing field. Check <a href="#Links">links</a> section for some examples.</p>
+
+<p align="left">NETDEF
+is a first step to create a general purpose language for neural
+network hardware. NETDEF relevant feature is that it gives an
+automatic mechanism to translate complex algorithms into neural
+networks descriptions.</p>
+
+<p align="left">Here
+lies the main difference in NETDEF: it can describe any procedure,
+not just learning algorithms, and map them into a neural net text
+description. This description then, is used in some appropriate
+neural hardware machine where the desired algorithm can be
+executed, and not just on a von Neumann machine.</p>
+</blockquote>
+<hr>
+<ul>
+	<li><p
+        align="left"><a name="Downloads"><font size="4"
+        face="Trebuchet MS, Arial, Helvetica"><strong>Downloads</strong></font></a></p>
+        <table border="0" cellpadding="3" cellspacing="3"
+        width="100%">
+<TBODY msthemelist>            
+            <tr msthemelist>
+                <td valign="baseline" width="42"><img
+                src="indbul2a.gif" hspace="15"
+                width="12" height="12"></td>
+                <td valign="top" width="100%">The NETDEF
+                compiler and simulator (Windows&trade; only) <font
+                face="Trebuchet MS, Arial, Helvetica"><a href="zips/netdef.zip"><img
+                src="zipped.gif"
+                alt="Download NETDEF Compiler" border="0"
+                width="19" height="19"></a> </font><font
+                size="2" face="Trebuchet MS, Arial, Helvetica">[~350k]</font>
+                </td>
+            </tr>
+            <tr msthemelist>
+                <td valign="baseline" width="42"><img
+                src="indbul2a.gif" hspace="15"
+                width="12" height="12"></td>
+                <td valign="top" width="100%">The NETDEF
+                helpfile <font
+                face="Trebuchet MS, Arial, Helvetica"><a href="zips/netdef-help.zip"><img
+                src="zipped.gif"
+                alt="Download NETDEF Help File" border="0"
+                width="19" height="19"></a> </font><font
+                size="2" face="Trebuchet MS, Arial, Helvetica">[~100k]</font>
+                </td>
+            </tr>
+            <tr msthemelist>
+                <td valign="baseline" width="42"><img
+                src="indbul2a.gif" hspace="15"
+                width="12" height="12"></td>
+                <td valign="top" width="100%"><font size="3">
+ <i>Symbolic Processing in Neural Networks</i>, <b>Journal of Brazilian Computer Science</b>,
+      8(3), 58-70, 2003. Download it in <a href="papers/jbcs_ps.gz">gziped
+      postscript</a> or <a href="papers/jbcs.pdf">pdf</a> format.</font>
+                </td>
+            </tr>
+</TBODY>        </table>
+    </li>
+</ul>
+
+<br>
+<hr>
+<ul>
+	<li><font size="4" face="Trebuchet MS, Arial, Helvetica">
+        <strong>Links</strong></font>
+
+
+        <p><font size="4" face="Trebuchet MS, Arial, Helvetica"><strong>Software</strong></font></p>
+        <table border="0" cellpadding="3" cellspacing="3"
+        width="100%">
+<TBODY msthemelist>            <tr msthemelist>
+                <td valign="baseline" width="42"><img
+                src="indbul2a.gif" hspace="15"
+                width="12" height="12"></td>
+                <td valign="top" width="100%"><p
+                align="left"><a
+                href="http://www.informatik.uni-ulm.de/ni/NNSim/section3.6.html"><font
+                face="Trebuchet MS, Arial, Helvetica"><strong>AXON</strong></font></a><font
+                face="Trebuchet MS, Arial, Helvetica"> - A
+                neurosoftware language, built on a certain neural
+                network model, able to describe complex networks
+                in order to simulate them on a personal computer.
+                For a list of NN simulation tools check </font><a
+                href="http://www.informatik.uni-ulm.de/ni/NNSim/overview.html"><font
+                face="Trebuchet MS, Arial, Helvetica">here</font></a><font
+                face="Trebuchet MS, Arial, Helvetica">.</font></p>
+                </td>
+            </tr>
+            <tr msthemelist>
+                <td valign="baseline" width="42"><img
+                src="indbul2a.gif" hspace="15"
+                width="12" height="12"></td>
+                <td valign="top" width="100%"><p
+                align="left"><a
+                href="http://www.bbb.caltech.edu/GENESIS/genesis.html"><font
+                face="Trebuchet MS, Arial, Helvetica"><strong>GENESIS</strong></font></a><font
+                face="Trebuchet MS, Arial, Helvetica"><strong> </strong>-
+                an elaborate neural circuit language simulator.</font></p>
+                </td>
+            </tr>
+            <tr msthemelist>
+                <td valign="baseline" width="42"><img
+                src="indbul2a.gif" hspace="15"
+                width="12" height="12"></td>
+                <td valign="top" width="100%"><p
+                align="left"><a
+                href="http://retina.anatomy.upenn.edu/~rob/neuronc.html"><font
+                face="Trebuchet MS, Arial, Helvetica"><strong>NeuronC</strong></font></a><font
+                face="Trebuchet MS, Arial, Helvetica"> - A neural
+                circuit simulation language to construct a
+                realistic biophysically-based model of a neural
+                circuit and simulate a physiology experiment on
+                it.</font></p>
+                </td>
+            </tr>
+            <tr msthemelist>
+                <td valign="baseline" width="42"><img
+                src="indbul2a.gif" hspace="15"
+                width="12" height="12"></td>
+                <td valign="top" width="100%"><p
+                align="left"><a
+                href="http://www.mathworks.com/products/neuralnet/"><font
+                size="3" face="Trebuchet MS, Arial, Helvetica"><strong>NN
+                Toolbox</strong></font></a><font
+                face="Trebuchet MS, Arial, Helvetica"> - A
+                comprehensive environment for neural network
+                research, design, and simulation within MATLAB&trade;.</font></p>
+                </td>
+            </tr>
+</TBODY>        </table>
+        <p><font size="4" face="Trebuchet MS, Arial, Helvetica"><strong>Hardware</strong></font></p>
+        <table border="0" cellpadding="3" cellspacing="3"
+        width="100%">
+<TBODY msthemelist>            <tr msthemelist>
+                <td valign="baseline" width="42"><img
+                src="indbul2a.gif" hspace="15"
+                width="12" height="12"></td>
+                <td valign="top" width="100%">Siemens MA-16
+                chip neurocomputer family. It is possible to
+                describe complex learning algorithms using a
+                programming language named <strong>nAPL</strong>.
+                The actual version is <a
+                href="http://neuralnets.web.cern.ch/NeuralNets/nnwInHepHard.html#ma16"><font
+                face="Trebuchet MS, Arial, Helvetica">SYNAPSE-3</font></a><font
+                face="Trebuchet MS, Arial, Helvetica">&trade;. <em>Description</em>:
+                </font><font size="2"
+                face="Trebuchet MS, Arial, Helvetica">&quot;The
+                Siemen's MA-16 chip is a fast matrix-matrix
+                multiplier that can be combined to form systolic
+                arrays, i.e. inputs and outputs are passed from
+                one module to another in an assembly line manner.
+                A single module can process 4 patterns, of 16
+                elements each (16-bit), with 16 neuron values (16-bit)
+                at a rate of 800 multiply/accumulates/sec at 50Mhz.
+                Weights are loaded from off-chip RAM and neuron
+                transfer functions are calculated with off-chip
+                look-up-tables.&quot;</font>
+                </td>
+            </tr>
+</TBODY>        </table>
+        <table border="0" cellpadding="3" cellspacing="3"
+        width="100%">
+<TBODY msthemelist>            <tr msthemelist>
+                <td valign="baseline" width="42"><img
+                src="indbul2a.gif" hspace="15"
+                width="12" height="12"></td>
+                <td valign="top" width="100%"><p
+                align="left"><font
+                face="Trebuchet MS, Arial, Helvetica">Information
+                about Microprocessor NeuroMatrix</font><font
+                size="2" face="Trebuchet MS, Arial, Helvetica"><sup>®</sup></font><font
+                face="Trebuchet MS, Arial, Helvetica"> </font><a
+                href="http://www.module.ru/products/nm/nm6403.html"><font
+                face="Trebuchet MS, Arial, Helvetica"><strong>NM6403</strong></font></a><font
+                face="Trebuchet MS, Arial, Helvetica">, designed
+                by </font><a href="http://www.module.ru/"><font
+                face="Trebuchet MS, Arial, Helvetica"><strong><i>RC
+                &quot;Module&quot;</i></strong></font></a><font
+                face="Trebuchet MS, Arial, Helvetica"> at 1997/8.
+                <em>Description</em>: </font><font size="2"
+                face="Trebuchet MS, Arial, Helvetica">&quot;NM6403
+                is a high performance microprocessor with super
+                scalar architecture. The architecture includes
+                control unit, address calculation, and scalar
+                processing units, node to support vector
+                operations with elements of variable bit length.
+                There are two identical programmable interfaces
+                to work with&nbsp; any memory types as well as
+                two communication ports hardware&nbsp; compatible
+                with those of DSP MS320C4x which permit to build
+                multi-processor systems...&quot;</font> </p>
+                </td>
+            </tr>
+            
+</TBODY>        </table>
+        
+    </li>
+</ul>
+<p align="right"><i>January 2005</i></p>
+</body>
+</html>

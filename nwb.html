@@ -1,0 +1,176 @@
+<HTML>
+<HEAD>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <meta http-equiv="Content-Language" content="en-us">
+   <meta name="Author" content="Joao Pedro Neto">
+   <TITLE>Neural WorkBench</TITLE>
+</HEAD>
+
+<BODY background="glabkgnd.jpg" bgcolor="#FFFFFF" text="#000000" link="#006666" vlink="#999999" alink="#66CCCC">
+
+<font face="Arial, Arial, Helvetica">
+
+<CENTER><B><font size="5">The Neural WorkBench</font></B></CENTER>
+</font>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td valign="baseline" width="42"><img src="aglabul1.gif" width="15" height="15" hspace="13"></td>
+    <td valign="top" width="100%"><font face="Arial, Arial, Helvetica"><B>&nbsp;Introduction</B>
+<p>The field of Artificial Recursive Neural Networks
+  (ARNN’s) is meeting a lot of excitement nowadays. Both because of their
+  achievements in solving real world problems and their simplicity of the
+  underlying principles that still allow them to mimic
+  their biological counterparts. All this excitement attracts
+  people from many different fields such as Neurophisiology, Biology and
+  Computer Science, among others. We present our work in the Computer Science
+  perspective. The view we are interested in, is the one in which
+  an ARNN can be seen as a computing mechanism able to perform some kind of
+  computation based on a program coded as a
+  specific arrangement of neural artifacts, like neurons and synapses.</p>
+
+      <p>When informally speaking of a neural computer, one
+could be motivated about what could it be like, the language
+to program such a machine. The language that we will use is the one of partial
+recursive functions (PRF). Although primitive
+when compared to modern computer languages, it is simple and powerful
+enough to program any mechanism with same computing power as a Turing machine
+w.r.t. the class of functions it can compute.
+Surely, building complex programs with this language would be very
+difficult and more appropriate languages exist. For our purposes however, this
+language is suited. The PRF theory identifies
+the set of computable functions with the set of computable functions on . 
+Such functions are called partial because we do not require them to be defined for every value of the domain.
+These functions are also called recursive, because each
+one can be obtained by recursive application of 3 rules (operations) over the
+axioms (the base set). Check this <a href="papers/Tech_Report 98-8.pdf">technical
+report</a> for more information.</p></font></td>
+  </tr>
+  <tr>
+    <td valign="baseline" width="42"><img src="aglabul1.gif" width="15" height="15" hspace="13"></td>
+    <td valign="top" width="100%"><font face="Arial, Arial, Helvetica"><B>Example of a .PRV file (check <A HREF="#sum.equ">below</A> for the compilation result )</B><A NAME="sum-prv"></A>
+<br>
+<BR><TT>&nbsp;//&nbsp; Sum example</TT>
+<BR><TT>&nbsp;//</TT>
+<BR><TT>&nbsp;proj/1&nbsp; U(1,1)</TT>
+<BR><TT>&nbsp;proj/2&nbsp; U(3,3)</TT>
+<BR><TT>&nbsp;comp&nbsp;&nbsp;&nbsp; C( proj/2, S )</TT>
+<BR><TT>&nbsp;sum&nbsp;&nbsp;&nbsp;&nbsp; R( proj/1, comp )</TT>
+<BR><TT>&nbsp;</TT></font></td>
+  </tr>
+</table>
+<font face="Arial, Arial, Helvetica"></font>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td valign="baseline" width="42"><img src="aglabul1.gif" width="15" height="15" hspace="13"></td>
+    <td valign="top" width="100%"><font face="Arial, Arial, Helvetica"><p><B>The simulator workbench</B></p>
+  <CENTER><IMG SRC="nwb.gif" HEIGHT=422 WIDTH=517></CENTER>&nbsp;</font></td>
+  </tr>
+</table>
+<font face="Arial, Arial, Helvetica"></font>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td valign="baseline" width="42"><img src="aglabul1.gif" width="15" height="15" hspace="13"></td>
+    <td valign="top" width="100%"><font face="Arial, Arial, Helvetica"><p><B>Want to try it?</b></p>
+<p>Get the zipped program - version 3, May 1998 [396k] :&nbsp; <a HREF="zips/nwb3.zip">nwb3.zip</a></p>
+<p>Get the paper that introduces NWB (in PDF) : Paulo J.F. Carreira, Miguel A.
+Rosa, J. Pedro Neto and J. Félix Costa. Building a Neural Computer.
+Technical Report DI/FCUL TR-98-8. Department of Computer Science, University of
+Lisbon. December 1998. <a href="https://repositorio.ulisboa.pt/handle/10451/14240">read it</a></p>
+      </font></td>
+  </tr>
+</table>
+<font face="Arial, Arial, Helvetica"></font>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td valign="baseline" width="42"><img src="aglabul1.gif" width="15" height="15" hspace="13"></td>
+    <td valign="top" width="100%"><font face="Arial, Arial, Helvetica"><p><b>Contacts:</b></p>
+<p>If you have some doubts, questions or comments about the program, email to
+<BR>Miguel Rosa (<a HREF="mailto:mar@fccn.pt">mar@fccn.pt</a>)
+or Paulo Carreira (<a HREF="mailto:pcarreira@oblog.pt">pcarreira@oblog.pt</a>)</p>
+<P>Questions about the method, email to João Pedro Neto (<A HREF="mailto:jpn@di.fc.ul.pt">jpn@di.fc.ul.pt</A>)</p>
+      </font></td>
+  </tr>
+</table>
+
+<p align="center"><img src="aglarule.gif"></p>
+
+<blockquote>
+<p>The result Neural Net after compilation of the sum definition:</p>
+   <center><IMG SRC="nwb2.gif" HEIGHT="180"></center>
+
+<br>
+
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               | 0&nbsp; if&nbsp; x &lt; 0
+<BR>sigma(x) = | x&nbsp; if&nbsp; x in [0,1]
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               | 1&nbsp; if&nbsp; x > 1</TT>
+     
+<br><br>
+<TT>XRin_1_0(i+1) = sigma( 1.0*Ein(i) + 0 )</TT>
+<BR><TT>XRmid2_1_1(i+1) = sigma( 1.0*XRin_1_0(i) + 0 )</TT>
+<BR><TT>XRmid3_1_2(i+1) = sigma( 0.10*XRin_1_0(i) + 1.0*XRmid3_1_2(i) +
+1.0*XRmid4_1_3(i) + -1.0*XRmid5_1_4(i) + -1.0*XREout_1_15(i) + 0 )</TT>
+<BR><TT>XRmid4_1_3(i+1) = sigma( 0.10*XRmid3_1_2(i) + 1.0*XRmid5_1_4(i)
++ -0.9 )</TT>
+<BR><TT>XRmid5_1_4(i+1) = sigma( 1.0*XRmid6_1_5(i) + 0 )</TT>
+<BR><TT>XRmid6_1_5(i+1) = sigma( 1.0*XSout_5_7(i) + 0 )</TT>
+<BR><TT>XRmid7_1_6(i+1) = sigma( 1.0*XRmid3_1_2(i) + 1.0*XRmid15_1_14(i)
++ -1 )</TT>
+<BR><TT>XREres_1_7(i+1) = sigma( 1.0*XRmid13_1_12(i) + 1.0*XRmid19_1_18(i)
++ -1 )</TT>
+<BR><TT>XRmid9_1_8(i+1) = sigma( 1.0*XRmid5_1_4(i) + 1.0*XU(1,1)inout_3_0(i)
++ 0 )</TT>
+<BR><TT>XRmid10_1_9(i+1) = sigma( 0.20*XRmid9_1_8(i) + 10.0*XRdatay_1_10(i)
++ -1.2 )</TT>
+<BR><TT>XRdatay_1_10(i+1) = sigma( -1.0*XRmid9_1_8(i) + 1.0*XRmid10_1_9(i)
++ 1.0*XRdatay_1_10(i) + -1.0*XREout_1_15(i) + 1.0*Edata2(i) + 0 )</TT>
+<BR><TT>XRmid12_1_11(i+1) = sigma( 1.0*XRmid9_1_8(i) + 0 )</TT>
+<BR><TT>XRmid13_1_12(i+1) = sigma( 2.0*XRmid12_1_11(i) + -100.0*XRmid14_1_13(i)
++ -1 )</TT>
+<BR><TT>XRmid14_1_13(i+1) = sigma( 1.0*XRdatay_1_10(i) + -0.1 )</TT>
+<BR><TT>XRmid15_1_14(i+1) = sigma( 2.0*XRmid12_1_11(i) + 100.0*XRmid14_1_13(i)
++ -2 )</TT>
+<BR><TT>XREout_1_15(i+1) = sigma( 1.0*XRmid13_1_12(i) + 0 )</TT>
+<BR><TT>XRmid17_1_16(i+1) = sigma( 1.0*XRmid15_1_14(i) + 0 )</TT>
+<BR><TT>XRmid18_1_17(i+1) = sigma( 1.0*XRmid15_1_14(i) + 1.0*XRmid19_1_18(i)
++ -1 )</TT>
+<BR><TT>XRmid19_1_18(i+1) = sigma( -1.0*XREout_1_15(i) + 1.0*XRmid19_1_18(i)
++ -10.0*XRmid20_1_19(i) + 1.0*XRmid21_1_20(i) + 1.0*XU(1,1)datares_3_1(i)
++ 0 )</TT>
+<BR><TT>XRmid20_1_19(i+1) = sigma( 1.0*XSres_5_9(i) + 0 )</TT>
+<BR><TT>XRmid21_1_20(i+1) = sigma( 1.0*XRmid20_1_19(i) + 0 )</TT>
+<BR><TT>XRdata1_1_21(i+1) = sigma( 1.0*XRdata1_1_21(i) + -1.0*XREout_1_15(i)
++ 1.0*Edata1(i) + 0 )</TT>
+<BR><TT>XRmid22_1_22(i+1) = sigma( 1.0*XRdata1_1_21(i) + 1.0*XRin_1_0(i)
++ -1 )</TT>
+<BR><TT>XRmid23_1_23(i+1) = sigma( 1.0*XRdata1_1_21(i) + 1.0*XRmid15_1_14(i)
++ -1 )</TT>
+<BR><TT>XU(1,1)inout_3_0(i+1) = sigma( 1.0*XRmid2_1_1(i) + 0 )</TT>
+<BR><TT>XU(1,1)datares_3_1(i+1) = sigma( 1.0*XRmid22_1_22(i) + 0 )</TT>
+<BR><TT>XU(1,1)data_3_2(i+1) = sigma( 0 )</TT>
+<BR><TT>XCmid1_3_3(i+1) = sigma( -1.0*XCmid1_3_3(i) + 1.0*XCmid8_3_7(i)
++ 0 )</TT>
+<BR><TT>XCmid2_3_4(i+1) = sigma( 1.0*XCmid1_3_3(i) + 0 )</TT>
+<BR><TT>XCmid6_3_5(i+1) = sigma( -1.0*XCmid7_3_6(i) + 1.0*XCmid6_3_5(i)
++ 1.0*XU(3,3)datares_5_4(i) + 0 )</TT>
+<BR><TT>XCmid7_3_6(i+1) = sigma( 1.0*XCmid6_3_5(i) + 1.0*XCmid1_3_3(i)
++ -1 )</TT>
+<BR><TT>XCmid8_3_7(i+1) = sigma( -1.0*XCmid1_3_3(i) + 1.0*XCmid8_3_7(i)
++ 1.0*XU(3,3)inout_5_3(i) + 0 )</TT>
+<BR><TT>XU(3,3)inout_5_3(i+1) = sigma( 1.0*XRmid17_1_16(i) + 0 )</TT>
+<BR><TT>XU(3,3)datares_5_4(i+1) = sigma( 1.0*XRmid18_1_17(i) + 0 )</TT>
+<BR><TT>XU(3,3)data_5_5(i+1) = sigma( 1.0*XRmid23_1_23(i) + 1.0*XRmid7_1_6(i)
++ 0 )</TT>
+<BR><TT>XSin_5_6(i+1) = sigma( 1.0*XCmid2_3_4(i) + 0 )</TT>
+<BR><TT>XSout_5_7(i+1) = sigma( 1.0*XSin_5_6(i) + 0 )</TT>
+<BR><TT>XSdata_5_8(i+1) = sigma( 1.0*XCmid7_3_6(i) + 0 )</TT>
+<BR><TT>XSres_5_9(i+1) = sigma( 1.0*XSin_5_6(i) + 0.10*XSdata_5_8(i) +
+-0.9 )</TT>
+
+</blockquote>
+
+<p align="right"><i>December 1999</i></p>
+
+</body>
+</html>
